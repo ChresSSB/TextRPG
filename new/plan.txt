@@ -1,0 +1,21 @@
+player: Object
+    - name: string
+	- build: Build Object
+	- max_hp: Build.hp
+	- max_mp: Build.mp
+	- hp: Build.hp
+	- mp: Build.mp
+	- level: int
+	- exp: int
+	- next_level: int
+	- gold: int
+	- equipment: Object
+	- locked_skills: list of Skill Object
+	- skills: list of Skill objects
+	- inventory: list of Item objects
+	- alive: boolean
+	
+build: Object
+    - prog: Dictionary mapping (level : Skill object)
+    - perk: Object
+	- 
