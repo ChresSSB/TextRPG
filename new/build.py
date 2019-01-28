@@ -1,8 +1,8 @@
 class Build:
-    def __init__(self, name, hp, mp, stats, prog):
-        self.name = name
-        self.hp = hp
-        self.mp = mp
-        self.stats = stats
-        self.prog = prog
+    def __init__(self, build):
+        self.name = build["name"]
+        self.hp = build["hp"]
+        self.mp = build["mp"]
+        self.stats = build["stats"]
+        self.prog = build["prog"]
 

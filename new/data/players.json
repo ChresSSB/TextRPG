@@ -1,0 +1,20 @@
+{
+    "players": {
+        "Chres": {
+            "alive": true,
+            "equipment": [],
+            "exp": 0,
+            "gold": 0,
+            "hp": 10,
+            "inventory": [],
+            "level": 0,
+            "locked_skills": {},
+            "max_hp": 10,
+            "max_mp": 10,
+            "mp": 10,
+            "name": "Chres",
+            "skills": []
+        }
+    },
+    "xref": []
+}
