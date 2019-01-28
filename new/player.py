@@ -11,7 +11,13 @@ class Player:
         self.level = 0
         self.exp = 0
         self.gold = 0
-        self.equipment = []
+        self.equipment = {"slot1": "empty",
+                          "slot2": "empty",
+                          "slot3": "empty",
+                          "slot4": "empty",
+                          "slot5": "empty",
+                          "slot6": "empty"}
+
         self.locked_skills = build.prog
         self.skills = []
         self.inventory = []
