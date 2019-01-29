@@ -19,3 +19,14 @@ if __name__ == '__main__':
     game_utilities.write_json("players.json", players_json)
 
     player.display_stats()
+
+    itemdict = game_utilities.process_json("items.json")
+
+    itempile = {}
+    equipable = {}
+    for k,v in itemdict["items"].items():
+
+
+
+def main():
+    pass

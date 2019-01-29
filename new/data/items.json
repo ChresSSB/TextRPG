@@ -5,16 +5,14 @@
             "buy_price": 30,
             "description": "Weird plastic connected to rubber and other plastic by wires.",
             "rarity": "rare",
-            "sell_price": 25,
-            "type": "misc"
+            "sell_price": 25
         },
         "Wood Block": {
             "name": "Wood Block",
             "buy_price": 10,
             "description": "",
             "rarity": "common",
-            "sell_price": 5,
-            "type": "misc"
+            "sell_price": 5
         },
         "Wooden Stick": {
             "buffs": {
@@ -33,15 +31,13 @@
             "description": "",
             "rarity": "common",
             "sell_price": 5,
-            "slot": "right hand",
-            "type": "equipment"
+            "slot": "right hand"
         },
         "cheese": {
             "buy_price": 1,
             "description": "cheese ",
             "rarity": "common",
-            "sell_price": 0,
-            "type": "misc"
+            "sell_price": 0
         }
     },
     "xref": [

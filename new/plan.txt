@@ -18,4 +18,29 @@ player: Object
 build: Object
     - prog: Dictionary mapping (level : Skill object)
     - perk: Object
-	- 
+	-
+
+
+
+
+editing -> edit json files directly
+
+loading -> get everything from json files ->
+ load into objects for the game as a list of "name of object" to object mapping
+  (No changing object attributes unless game dependent like hp of player)
+
+
+changes during game:
+    players.json/saves.json
+
+does not change during game: loaded in and also editable as json
+
+loads all into objects that are stored in a dictionary stored as name:object
+    builds.json/classes.json
+    enemies.json
+    items.json
+    npcs.json
+    progression.json
+    shops.json
+    skills.json
+

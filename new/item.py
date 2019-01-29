@@ -1,10 +1,10 @@
 class Item:
-    def __init__(self, name):
-        self._name = name
-        self._buy = 0
-        self._sell = 0
-        self._desc = ""
-        self._rarity = "common"
+    def __init__(self, item):
+        self._name = item["name"]
+        self._buy_price = item["buy_price"]
+        self._sell_price = item["sell_price"]
+        self._desc = item["description"]
+        self._rarity = item["rarity"]
 
     def __str__(self):
         return self.name

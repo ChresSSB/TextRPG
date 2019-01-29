@@ -1,8 +1,8 @@
 
 class Location:
-    def __init__(self, name):
+    def __init__(self, name, location):
         self._name = name
-        self._adjacent = []
+        self._adjacent = location["adjacent"]
         self._enemies = {}
         self._shops = []
         self._npcs = []
@@ -13,9 +13,6 @@ class Location:
 
     def get_name(self):
         return self._name
-
-    def set_name(self, value):
-        self._name = value
 
     def get_adjacent(self):
         return self._adjacent
