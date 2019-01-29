@@ -6,3 +6,7 @@ class Build:
         self.stats = build["stats"]
         self.prog = build["prog"]
 
+    def __str__(self):
+        return self.name
+
+    
