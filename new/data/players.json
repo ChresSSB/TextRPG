@@ -1,0 +1,40 @@
+{
+    "players": {
+        "Chres": {
+            "access": [],
+            "alive": true,
+            "build": "Mage",
+            "death_count": 0,
+            "equipment": {
+                "amulet": "empty",
+                "boots": "empty",
+                "chestplate": "empty",
+                "helmet": "empty",
+                "leggings": "empty",
+                "ring": "empty",
+                "weapon": "empty"
+            },
+            "exp": 0,
+            "gold": 0,
+            "hp": 10,
+            "inventory": [],
+            "level": 0,
+            "location": "",
+            "locked_skills": {},
+            "max_hp": 10,
+            "max_mp": 15,
+            "mp": 15,
+            "name": "Chres",
+            "next_level": 0,
+            "skills": [],
+            "stats": {
+                "att": 0,
+                "crt": 0,
+                "def": 0,
+                "evd": 0,
+                "spd": 0
+            }
+        }
+    },
+    "xref": []
+}

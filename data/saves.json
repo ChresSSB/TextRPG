@@ -1,6 +1,10 @@
 {
     "saves": {
         "Chres": {
+            "access": [
+                "Testland",
+                "IRL"
+            ],
             "class": "Knight",
             "deaths": 0,
             "equipment": {
@@ -13,40 +17,80 @@
                 "right hand": "Wooden Stick",
                 "ring": "empty"
             },
-            "exp": 37,
-            "exp_req": 160,
-            "gold": 760,
-            "hp": 49,
+            "exp": 93,
+            "exp_req": 200,
+            "gold": 2760,
+            "hp": 52,
             "inventory": [
                 "Wood Block",
+                "Wooden Stick",
                 "Wooden Stick"
             ],
-            "level": 3,
-            "location": "Testland",
+            "level": 5,
+            "location": "IRL",
             "max_hp": 53,
             "max_mp": 52,
-            "mp": 52,
+            "mp": 42,
             "name": "Chres",
-            "skills": [],
+            "skills": [
+                "Recall",
+                "Lunge",
+                "Arrow Storm"
+            ],
             "stats": {
-                "att": 35,
+                "att": 100,
                 "crt": 1,
                 "def": 20,
-                "evd": 8
+                "evd": 100
+            },
+            "training_points": 0
+        },
+        "Test": {
+            "access": [],
+            "class": "Mage",
+            "deaths": 1,
+            "equipment": {
+                "chest": "empty",
+                "feet": "empty",
+                "head": "empty",
+                "left hand": "empty",
+                "legs": "empty",
+                "necklace": "empty",
+                "right hand": "empty",
+                "ring": "empty"
+            },
+            "exp": 0,
+            "exp_req": 100,
+            "gold": 1000,
+            "hp": 50,
+            "inventory": [],
+            "level": 0,
+            "location": "Starterville",
+            "max_hp": 50,
+            "max_mp": 50,
+            "mp": 50,
+            "name": "Test",
+            "skills": [],
+            "stats": {
+                "att": 10,
+                "crt": 10,
+                "def": 10,
+                "evd": 10
             },
             "training_points": 0
         },
         "start_template": {
+            "access": [],
             "class": "Knight",
             "deaths": 0,
             "equipment": {
                 "chest": "empty",
                 "feet": "empty",
                 "head": "empty",
-                "left_hand": "empty",
+                "left hand": "empty",
                 "legs": "empty",
                 "necklace": "empty",
-                "right_hand": "empty",
+                "right hand": "empty",
                 "ring": "empty"
             },
             "exp": 0,
@@ -71,6 +115,7 @@
         }
     },
     "xref": [
-        "Chres"
+        "Chres",
+        "Test"
     ]
 }

@@ -1,0 +1,41 @@
+{
+  "builds": {
+    "Knight": {
+      "name": "Knight",
+      "hp": 15,
+      "mp": 10,
+      "prog": {},
+      "stats": {"att": 0,"crt": 0,
+      "def":  0,
+      "spd": 0,
+      "evd": 0}
+    },
+    "Mage": {
+      "name": "Mage",
+      "hp": 10,
+      "mp": 15,
+      "prog": {},
+      "stats": {"att": 0,"crt": 0,
+      "def":  0,
+      "spd": 0,
+      "evd": 0}
+    },
+    "Theif": {
+      "name": "Theif",
+      "hp": 10,
+      "mp": 10,
+      "prog": {},
+      "stats": {
+        "att": 0,
+        "crt": 0,
+      "def":  0,
+      "spd": 5,
+      "evd": 5}
+    }
+  },
+  "xref": []
+
+
+
+
+}

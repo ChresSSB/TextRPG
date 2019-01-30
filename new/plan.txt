@@ -1,0 +1,46 @@
+player: Object
+    - name: string
+	- build: Build Object
+	- max_hp: Build.hp
+	- max_mp: Build.mp
+	- hp: Build.hp
+	- mp: Build.mp
+	- level: int
+	- exp: int
+	- next_level: int
+	- gold: int
+	- equipment: Object
+	- locked_skills: list of Skill Object
+	- skills: list of Skill objects
+	- inventory: list of Item objects
+	- alive: boolean
+	
+build: Object
+    - prog: Dictionary mapping (level : Skill object)
+    - perk: Object
+	-
+
+
+
+
+editing -> edit json files directly
+
+loading -> get everything from json files ->
+ load into objects for the game as a list of "name of object" to object mapping
+  (No changing object attributes unless game dependent like hp of player)
+
+
+changes during game:
+    players.json/saves.json
+
+does not change during game: loaded in and also editable as json
+
+loads all into objects that are stored in a dictionary stored as name:object
+    builds.json/classes.json
+    enemies.json
+    items.json
+    npcs.json
+    progression.json
+    shops.json
+    skills.json
+

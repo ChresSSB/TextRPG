@@ -10,6 +10,7 @@ def battle(character, enemy):
     :param enemy:
     :return:
     """
+    saves = process_json("saves.json")
     character_stats = character["stats"]
     max_hp = enemy["hp"]
     enemy_name = colored(enemy["name"], "red")
@@ -49,9 +50,9 @@ def battle(character, enemy):
 
                     print(enemy_name + " took " + colored(str(damage), 'red') + " damage.")
                     if enemy["hp"] >= 0:
-                        print(enemy_name + " has " + str(enemy["hp"]) + " HP left")
+                        print(enemy_name + " has " + colored(str(enemy["hp"]), 'red') + " HP left")
                     else:
-                        print(enemy_name + " has 0 HP left")
+                        print(enemy_name + " has " + colored("0", 'red') + " HP left")
 
                     break
 
@@ -102,6 +103,7 @@ def battle(character, enemy):
         if character["hp"] <= 0:
             print("You were " + colored("defeated!", "blue"))
             character["deaths"] += 1
+            character["hp"] = 0
             break
         if enemy["hp"] <= 0:
             print("The enemy was " + colored("defeated!", "red"))
@@ -109,7 +111,9 @@ def battle(character, enemy):
             break
         turn += 1
 
-    enemy["hp"] = max_hp
+    saves["saves"][character["name"]] = character
+    print(saves)
+    write_json("saves.json", saves)
 
 
 def run_check(character_level, enemy_level):
@@ -180,14 +184,15 @@ def loot(character, enemy):
     :param enemy:
     :return:
     """
-    character_name = colored(character["name"], "blue")
+    character_name = colored(character["name"], 'blue')
+    enemy_name = colored(enemy["name"], 'red')
     progression = process_json("progression.json")
     character["exp"] += enemy["exp"]
-    print(character_name + " gained " + colored(str(enemy["exp"]), "magenta") + " experience")
+    print(character_name + " gained " + colored(str(enemy["exp"]), 'magenta') + " experience")
     if character["exp"] > character["exp_req"]:
         character["exp"] = character["exp"] - character["exp_req"]
         character["level"] += 1
-        print(character_name + " grew to level " + str(character["level"]))
+        print(character_name + " grew to level " + colored(str(character["level"]), 'magenta'))
         character["exp_req"] = progression[str(character["level"])]
 
     character["gold"] += enemy["gold"]
@@ -211,10 +216,12 @@ def loot(character, enemy):
         drop = np.random.choice(items, 1, probs)[0]
 
         if drop != "none":
-            print(enemy["name"] + " dropped a " + rarity_color_assigner(drop))
+            print(enemy_name + " dropped a " + rarity_color_assigner(drop))
             character["inventory"].append(drop)
         else:
-            print(enemy["name"] + " did not drop anything")
+            print(enemy_name + " did not drop anything")
+    else:
+        print(enemy_name + " did not drop anything")
 
 
 def critical_check(character):

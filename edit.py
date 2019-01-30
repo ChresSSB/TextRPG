@@ -118,6 +118,7 @@ def add_equipable():
 
     print("Options: ")
     print(','.join(process_json("classes.json")["xref"]))
+    print("For example: Enter required classes([class1],[class2]): Archer,Knight,Any")
     cls = input("Enter required classes([class1],[class2]): ")
     words = cls.split(",")
     words = class_validation(words)
@@ -232,23 +233,46 @@ def add_skill():
     skills["skills"][name] = {}
     skill = skills["skills"][name]
 
-    entry = input("Enter damage: ")
-    dmg = numeric_validation(entry)
-    skill["dmg"] = int(dmg)
+    while True:
+        skill_type = input("What kind of skill? (field or battle): ")
+        if skill_type == "battle":
+            skill["type"] = "battle"
+            break
+        elif skill_type == "field":
+            skill["type"] = "field"
+            break
+        else:
+            print("Invalid Input!")
 
-    entry = input("Enter mana cost: ")
-    mana = numeric_validation(entry)
-    skill["mana"] = int(mana)
+    if skill_type == "battle":
+        entry = input("Enter damage: ")
+        dmg = numeric_validation(entry)
+        skill["dmg"] = int(dmg)
 
-    entry = input("Enter class requirement([class1],[class2]): ")
-    entry = entry.split(",")
-    words = class_validation(entry)
-    skill["class"] = words
 
     entry = input("Enter level requirement: ")
     level = numeric_validation(entry)
     skill["level"] = int(level)
 
+    entry = input("Enter mana cost: ")
+    mana = numeric_validation(entry)
+    skill["mana"] = int(mana)
+
+    print("Options: ")
+    print(','.join(process_json("classes.json")["xref"]))
+    print("For example: Enter required classes([class1],[class2]): Archer,Knight,Any")
+    entry = input("Enter class requirement([class1],[class2]): ")
+    entry = entry.split(",")
+    words = class_validation(entry)
+    skill["class"] = words
+
+    entry = input("Enter property/properties([property1],[property2]): ")
+    entry = entry.split(",")
+    checked = process_json("properties.json")["xref"]
+    level = array_validation(entry, checked)
+    skill["level"] = int(level)
+
+    skills["xref"].append(name)
     write_json("skills.json", skills)
 
 

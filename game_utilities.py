@@ -236,7 +236,7 @@ def rarity_color_assigner(drop):
         elif rarity == item["rarity"] and rarity == "uncommon":
             return colored(drop, 'green')
         elif rarity == item["rarity"] and rarity == "rare":
-            return colored(drop, 'yellow')
+            return colored(drop, 'gold')
         elif rarity == item["rarity"] and rarity == "ancient":
             return colored(drop, 'cyan')
         elif rarity == item["rarity"] and rarity == "legendary":

@@ -79,6 +79,9 @@ def start_game(character):
     # print(character)
     save_file = process_json("saves.json")
     while game_status:
+        if character["hp"] == 0:
+            print("You will be healed back up to full health!")
+            rest(character)
         print("#######################")
         print("1. Stats")
         print("2. Inventory")
@@ -95,7 +98,7 @@ def start_game(character):
             manage_equipment(character)
         elif selection.startswith("res") or selection == "3":
             rest(character)
-        elif selection.startswith("trav") or selection.startswith("goto") or selection == "4":
+        elif selection.startswith("tr") or selection.startswith("goto") or selection == "4":
             go_to(character)
         elif selection.startswith("sho") or selection == "5":
             shop(character)
@@ -117,20 +120,20 @@ def show_stats(character):
     print("Stats:")
     print("#######################")
     print("Name: " + colored(character["name"], 'blue'))
-    print("Level: " + str(character["level"]))
+    print("Level: " + colored(str(character["level"]), 'magenta'))
     print("Class: " + character["class"])
     print("Deaths: " + str(character["deaths"]))
-    print("HP: " + str(character["hp"]) + "/" + str(character["max_hp"]))
-    print("MP: " + str(character["mp"]) + "/" + str(character["max_mp"]))
+    print("HP: " + colored(str(character["hp"]) + "/" + str(character["max_hp"]), 'red'))
+    print("MP: " + colored(str(character["mp"]) + "/" + str(character["max_mp"]), 'blue'))
     print("Attack: " + str(character["stats"]["att"]))
     print("Defense: " + str(character["stats"]["def"]))
     print("Evasion: " + str(character["stats"]["evd"]))
     print("Critical: " + str(character["stats"]["crt"]))
-    print("Exp: " + str(character["exp"]))
-    print("Next Level: " + str(character["exp_req"]))
+    print("Exp: " + colored(str(character["exp"]), 'green'))
+    print("Next Level: " + colored(str(character["exp_req"]), 'green'))
     print("Training Points: " + str(character["training_points"]))
-    print("Skills: " + str(character["skills"]))
-    print("Gold: " + str(character["gold"]))
+    print("Skills: " + ', '.join(character["skills"]))
+    print("Gold: " + colored(str(character["gold"]), 'yellow'))
     print("Location: " + character["location"])
     print("#######################")
 
@@ -315,20 +318,61 @@ def go_to(character):
     """
     locations = process_json("locations.json")
     old_location = character["location"]
+    accesses = character["access"]
     loc_list = locations["locations"][old_location]["adjacent"]
+    enemies = process_json("enemies.json")
     while True:
         print(', '.join(loc_list))
         new_location = input("Choose a location (q to quit): ")
-        for loc in loc_list:
+        for loc in locations["xref"]:
             if loc.startswith(new_location):
                 new_location = loc
                 break
 
-        if new_location in loc_list:
-            if old_location in locations["locations"][new_location]["adjacent"]:
+        if "Recall" in character["skills"] and new_location not in loc_list and new_location == "Starterville":
+            if character["mp"] > 10:
                 character["location"] = new_location
+                character["mp"] -= 10
                 print("You are now in " + new_location)
+                print("You used 10 mana")
                 break
+            else:
+                print("You do not have enough mana for Recall!")
+                break
+
+        if new_location in loc_list:
+            if new_location not in accesses and len(list(locations["locations"][new_location]["enemies"].keys())) > 0:
+                print("You do not have access to this location!")
+                while True:
+                    challenge = input("Would you like to attempt clear this location?(y/n): ")
+                    if challenge == "y":
+                        location_enemies = list(locations["locations"][new_location]["enemies"].keys())
+                        if len(location_enemies) > 0:
+                            for i in range(0, 5):
+                                if len(location_enemies) != 1:
+                                    random = numpy.random.randint(0, len(location_enemies)-1)
+                                    enemy = enemies["enemies"][location_enemies[random]]
+                                else:
+                                    enemy = enemies["enemies"][location_enemies[0]]
+
+                                if character["hp"] > 0:
+                                    battle(character, enemy)
+                                else:
+                                    print("You were defeated!")
+                                    break
+                            if character["hp"] > 0:
+                                print("You defeated the gauntlet")
+                                print("You now have access to this location!")
+                                accesses.append(new_location)
+                                break
+                    elif challenge == "n":
+                        break
+
+            if old_location in locations["locations"][new_location]["adjacent"]:
+                if new_location in accesses or len(list(locations["locations"][new_location]["enemies"].keys())) == 0:
+                    character["location"] = new_location
+                    print("You are now in " + new_location)
+                    break
             else:
                 print("You can not go back the same way!")
                 while True:

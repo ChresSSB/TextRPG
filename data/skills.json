@@ -2,9 +2,29 @@
   "skills": {
     "Arrow Storm":{
       "dmg": 20,
+      "property": "",
       "mana": 10,
-      "class": "Archer",
-      "level": 1
-   }
-  }
+      "level": 1,
+      "type": "battle",
+      "class": ["Archer"]
+   },
+    "Recall":
+    {
+      "mana": 10,
+      "level": 1,
+      "type": "field",
+      "class": ["Mage"]
+    },
+    "Lunge":
+    {
+      "damage": 15,
+      "property": "pierce",
+      "mana": 5,
+      "level": 1,
+      "type": "battle",
+      "class": ["Knight"]
+    }
+
+  },
+  "xref": []
 }
