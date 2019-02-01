@@ -23,6 +23,13 @@ if __name__ == '__main__':
     itemdict = game_utilities.process_json("items.json")
 
 
+    #Load all jsons in with process_json
+
+    #Load all json files into a dictionary
+
+
+
+
 
 def main():
     pass

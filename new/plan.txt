@@ -43,4 +43,6 @@ loads all into objects that are stored in a dictionary stored as name:object
     progression.json
     shops.json
     skills.json
+    locations.json
+
 
