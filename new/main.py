@@ -22,10 +22,6 @@ if __name__ == '__main__':
 
     itemdict = game_utilities.process_json("items.json")
 
-    itempile = {}
-    equipable = {}
-    for k,v in itemdict["items"].items():
-
 
 
 def main():
