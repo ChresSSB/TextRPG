@@ -7,11 +7,15 @@ def character_creation(players, builds):
     build = input("What class is your character?: ")
 
     for item in builds:
-        print(str(type(item)) + ": " +  item.name)
+        print(str(type(item)) + ": " + item.name)
+        if build in item.name:
+            build = item
+            break
 
-    return ""
+    if type(build) is str:
+        return "Error"
 
-    players["xref"] = name
+    players["xref"].append(name)
 
     save = players["players"]
 
@@ -42,11 +46,11 @@ def character_creation(players, builds):
         "next_level": 0,
         "skills": [],
         "stats": {
-            "att": build.stats.attack,
-            "crt": build.stats.critical,
-            "def": build.stats.defense,
-            "evd": build.stats.evasion,
-            "spd": build.stats.speed
+            "att": build.stats["att"],
+            "crt": build.stats["crt"],
+            "def": build.stats["def"],
+            "evd": build.stats["evd"],
+            "spd": build.stats["spd"]
         }}
 
     game_utilities.write_json("players.json", save)
