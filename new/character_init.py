@@ -1,10 +1,11 @@
 import game_utilities
 from new.build import Build
+from new.player import Player
 
 
-def character_creation(players, builds):
-    name = input("What is the name of your character?: ")
+def character_creation(players, builds, name):
     build = input("What class is your character?: ")
+    save = players
 
     for item in builds:
         print(str(type(item)) + ": " + item.name)
@@ -16,9 +17,7 @@ def character_creation(players, builds):
         print("Error")
         return "Error"
 
-    players["xref"].append(name)
-
-    save = players
+    save["xref"].append(name)
 
     save["players"][name] = {"access": [],
         "alive": True,
@@ -59,9 +58,11 @@ def character_creation(players, builds):
     print("Character Created!")
 
 
-def load_character(players):
-    name = input("Which save?: ")
-    save = players[name]
+def load_character(players, name):
+    save = players["players"][name]
+    player = Player()
+    player.load_player(save)
+    player.display_stats()
 
 
 if __name__ == '__main__':
@@ -76,4 +77,8 @@ if __name__ == '__main__':
 
     print(buildlist)
 
-    character_creation(players, buildlist)
+    name = input("What is the name of your character?: ")
+
+    character_creation(players, buildlist, name)
+    load_character(players, name)
+    load_character(players, "DK")
