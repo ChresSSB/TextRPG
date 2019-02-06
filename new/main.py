@@ -4,32 +4,25 @@ import game_utilities
 
 
 if __name__ == '__main__':
-    name = "Chres"
-    builds_json = game_utilities.process_json("builds.json")
-    players_json = game_utilities.process_json("players.json")
+    status = True
+    while status:
+        print("Welcome to the TextRPG created by ChresSSB")
+        print("1. New Game")
+        print("2. Load Game")
+        print("3. Edit Game")
+        print("4. Credits")
+        print("5. Quit")
+        command = input("Select an option: ").lower()
+        if command == "1" or command.startswith("new"):
+            launch("new")
+        elif command == "2" or command.startswith("loa"):
+            launch("saves")
+        elif command == "3" or command.startswith("edi"):
+            pass
+        elif command == "4" or command.startswith("cre"):
+            print("Thank you for ShoShin for very minor help on edit methods and Khajeet for being a tester")
+        elif command == "5" or command.startswith("qu"):
+            status = False
+        else:
+            print("Select a valid option!")
 
-    build1 = builds_json["builds"]["Mage"]
-    build = Build(build1)
-    player = Player().new_player(name, build)
-    print(player)
-    player_dictionary = player.__dict__
-
-    players_json["players"][player.name] = player_dictionary
-
-    game_utilities.write_json("players.json", players_json)
-
-    player.display_stats()
-
-    itemdict = game_utilities.process_json("items.json")
-
-
-    #Load all jsons in with process_json
-
-    #Load all json files into a dictionary
-
-
-
-
-
-def main():
-    pass

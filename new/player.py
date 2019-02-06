@@ -25,7 +25,7 @@ class Player:
         self.stats = {}
         self.locked_skills = {}
         self.skills = []
-        self.inventory = []
+        self.inventory = {}
         self.alive = True
         self.death_count = 0
         self.location = ""
@@ -54,7 +54,7 @@ class Player:
         self.stats = build.stats
         self.locked_skills = build.prog
         self.skills = []
-        self.inventory = []
+        self.inventory = {}
         self.alive = True
         self.death_count = 0
         self.location = ""

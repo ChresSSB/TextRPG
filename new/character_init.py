@@ -13,13 +13,14 @@ def character_creation(players, builds):
             break
 
     if type(build) is str:
+        print("Error")
         return "Error"
 
     players["xref"].append(name)
 
-    save = players["players"]
+    save = players
 
-    save[name] = {"access": [],
+    save["players"][name] = {"access": [],
         "alive": True,
         "class": build.name,
         "death_count": 0,
@@ -35,7 +36,7 @@ def character_creation(players, builds):
         "exp": 0,
         "gold": 0,
         "hp": build.hp,
-        "inventory": [],
+        "inventory": {},
         "level": 0,
         "location": "Starterville",
         "locked_skills": build.prog,
@@ -55,11 +56,12 @@ def character_creation(players, builds):
 
     game_utilities.write_json("players.json", save)
 
+    print("Character Created!")
+
 
 def load_character(players):
     name = input("Which save?: ")
     save = players[name]
-    Player()
 
 
 if __name__ == '__main__':
