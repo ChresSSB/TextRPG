@@ -10,7 +10,7 @@ if __name__ == '__main__':
 
     build1 = builds_json["builds"]["Mage"]
     build = Build(build1)
-    player = Player(name, build)
+    player = Player().new_player(name, build)
     print(player)
     player_dictionary = player.__dict__
 

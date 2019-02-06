@@ -2,7 +2,7 @@
     "Chres": {
         "access": [],
         "alive": true,
-        "build": "Mage",
+        "class": "Mage",
         "death_count": 0,
         "equipment": {
             "amulet": "empty",

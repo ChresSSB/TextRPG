@@ -7,3 +7,4 @@ class Equipable(Item):
         self._level_requirement = equipable
         self._build_requirement = []
         self._boosts = {}
+        self._slot = ""

@@ -21,7 +21,7 @@ def character_creation(players, builds):
 
     save[name] = {"access": [],
         "alive": True,
-        "build": build.name,
+        "class": build.name,
         "death_count": 0,
         "equipment": {
             "amulet": "empty",
@@ -56,7 +56,10 @@ def character_creation(players, builds):
     game_utilities.write_json("players.json", save)
 
 
-
+def load_character(players):
+    name = input("Which save?: ")
+    save = players[name]
+    Player()
 
 
 if __name__ == '__main__':
