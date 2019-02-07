@@ -8,7 +8,6 @@ def character_creation(players, builds, name):
     save = players
 
     for item in builds:
-        print(str(type(item)) + ": " + item.name)
         if build in item.name:
             build = item
             break
@@ -54,8 +53,8 @@ def character_creation(players, builds, name):
         }}
 
     game_utilities.write_json("players.json", save)
-
     print("Character Created!")
+    return load_character(players, name)
 
 
 def load_character(players, name):
@@ -63,22 +62,5 @@ def load_character(players, name):
     player = Player()
     player.load_player(save)
     player.display_stats()
+    return player
 
-
-if __name__ == '__main__':
-    players = game_utilities.process_json("players.json")
-
-    builds = game_utilities.process_json("builds.json")["builds"]
-
-    buildlist = []
-
-    for key in builds:
-        buildlist.append(Build(builds[key]))
-
-    print(buildlist)
-
-    name = input("What is the name of your character?: ")
-
-    character_creation(players, buildlist, name)
-    load_character(players, name)
-    load_character(players, "DK")

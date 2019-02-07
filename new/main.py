@@ -14,9 +14,10 @@ if __name__ == '__main__':
         print("5. Quit")
         command = input("Select an option: ").lower()
         if command == "1" or command.startswith("new"):
-            launch("new")
+            pass
+            #start game but with different type
         elif command == "2" or command.startswith("loa"):
-            launch("saves")
+            pass
         elif command == "3" or command.startswith("edi"):
             pass
         elif command == "4" or command.startswith("cre"):
