@@ -8,8 +8,8 @@ def character_creation(players, builds, name):
     save = players
 
     for item in builds:
-        if build in item.name:
-            build = item
+        if build in item:
+            build = builds[item]
             break
 
     if type(build) is str:
@@ -62,5 +62,6 @@ def load_character(players, name):
     player = Player()
     player.load_player(save)
     player.display_stats()
+    print(player)
     return player
 

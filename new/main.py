@@ -4,6 +4,7 @@ import game_utilities
 
 
 if __name__ == '__main__':
+    # TODO: load all objects
     status = True
     while status:
         print("Welcome to the TextRPG created by ChresSSB")

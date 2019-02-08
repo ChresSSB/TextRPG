@@ -6,6 +6,7 @@
     "equipable": {
         "equipable_items": {
             "Wooden Stick": {
+                    "name": "Wooden Stick",
                 "buffs": {
                     "att": 5,
                     "crt": 0,

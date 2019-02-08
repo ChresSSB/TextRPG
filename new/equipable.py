@@ -2,9 +2,7 @@ from new.item import Item
 
 
 class Equipable(Item):
-    def __init__(self, item, equipable):
+    def __init__(self, item):
         Item.__init__(self, item)
-        self._level_requirement = equipable
-        self._build_requirement = []
-        self._boosts = {}
-        self._slot = ""
+        self._build_requirement = item["classes"]
+        self._slot = item["slot"]
