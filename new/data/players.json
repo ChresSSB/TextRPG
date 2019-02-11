@@ -18,7 +18,9 @@
             "gold": 0,
             "hp": 10,
             "inventory": {
-                "Item 12": 1
+                "Item 1": 40,
+                "Item 12": 1,
+                "dnmsakdas": 322
             },
             "level": 0,
             "location": "",

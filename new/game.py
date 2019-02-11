@@ -2,7 +2,7 @@ import game_utilities
 from new import character_init
 from new.build import Build
 from new.equipable import Equipable
-from new.inventory import inventory
+from new.inventory import show_inventory
 from new.player import Player
 import os
 
@@ -50,7 +50,7 @@ def game_loop(player, game_data):
         if selection.startswith("sta") or selection == "1":
             player.display_stats()
         elif selection.startswith("inv") or selection == "2":
-            inventory(player, game_data)
+            show_inventory(player, game_data)
         elif selection.startswith("res") or selection == "3":
             pass
         elif selection.startswith("tr") or selection.startswith("goto") or selection == "4":
