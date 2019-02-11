@@ -17,7 +17,9 @@
             "exp": 0,
             "gold": 0,
             "hp": 10,
-            "inventory": {},
+            "inventory": {
+                "Item 12": 1
+            },
             "level": 0,
             "location": "",
             "locked_skills": {},

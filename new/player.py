@@ -81,6 +81,31 @@ class Player:
         self.location = save["location"]
         self.access = save["access"]
 
+    def todict(self):
+        player = {}
+        player["access"] = self.access
+        player["alive"] = self.alive
+        player["class"] = self.build
+        player["death_count"] = self.death_count
+        player["equipment"] = self.equipment
+        player["exp"] = self.exp
+        player["gold"] = self.gold
+        player["hp"] = self.hp
+        player["inventory"] = self.inventory
+        player["level"] = self.level
+        player["location"] = self.location
+        player["locked_skills"] = self.locked_skills
+        player["max_hp"] = self.max_hp
+        player["max_mp"] = self.max_mp
+        player["mp"] = self.mp
+        player["name"] = self.name
+        player["next_level"] = self.next_level
+        player["skills"] = self.skills
+        player["stats"] = self.stats
+
+        return player
+
+
     def take_damage(self, damage):
         self.hp = self.hp - damage
         if self.hp <= 0:

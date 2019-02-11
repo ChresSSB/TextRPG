@@ -2,13 +2,12 @@ import game_utilities
 from new import character_init
 from new.build import Build
 from new.equipable import Equipable
+from new.inventory import inventory
 from new.player import Player
 import os
 
 
-def launch(mode):
-
-    game_data = game_utilities.load_data()
+def launch(mode, game_data):
 
     saves = game_utilities.process_json("players.json")
     if mode == "new":
@@ -25,7 +24,7 @@ def launch(mode):
                 print("That save doesn't exist")
 
 
-def game_loop():
+def game_loop(player, game_data):
     """
     game loop
     :param character:
@@ -33,10 +32,9 @@ def game_loop():
     """
     game_status = True
     print("Welcome to the game!")
-    # print(character)
-    save_file = game_utilities.process_json("saves.json")
+    save_file = game_utilities.process_json("players.json")
     while game_status:
-        if player["hp"] == 0:
+        if player.hp == 0:
             print("You will be healed back up to full health!")
             pass
         print("#######################")
@@ -52,7 +50,7 @@ def game_loop():
         if selection.startswith("sta") or selection == "1":
             player.display_stats()
         elif selection.startswith("inv") or selection == "2":
-            pass
+            inventory(player, game_data)
         elif selection.startswith("res") or selection == "3":
             pass
         elif selection.startswith("tr") or selection.startswith("goto") or selection == "4":
@@ -65,12 +63,10 @@ def game_loop():
             break
         else:
             print("Unrecognized Action. Please try again!")
-        save_file["saves"][player["name"]] = player
+        save_file["players"][player.name] = player.todict()
+        game_utilities.write_json("players.json", save_file)
 
 
-if __name__ == '__main__':
-    player = launch("new")
-    player.display_stats()
 
 
 
