@@ -1,12 +1,97 @@
 {
     "consumable": {
-        "consumable_items": {},
-        "xref": []
+        "consumable_items": {
+            "Cheese": {
+                "buffs": {
+                    "att": 0,
+                    "crt": 0,
+                    "def": 0,
+                    "evd": 0,
+                    "hp": 15,
+                    "mp": 0
+                },
+                "buy_price": 1,
+                "description": "Its cheese lol",
+                "rarity": "common",
+                "sell_price": 0
+            },
+            "Health Potion": {
+                "buffs": {
+                    "att": 0,
+                    "crt": 0,
+                    "def": 0,
+                    "evd": 0,
+                    "hp": 15,
+                    "mp": 0
+                },
+                "buy_price": 10,
+                "description": "A potion of healing",
+                "name": "Health Potion",
+                "rarity": "rare",
+                "sell_price": 5
+            },
+            "Potion of sudden hangover end": {
+                "buffs": {
+                    "att": 0,
+                    "crt": 4,
+                    "def": 0,
+                    "evd": 5,
+                    "hp": 0,
+                    "mp": 0
+                },
+                "buy_price": 100,
+                "description": "They say a man would do anything to rid himself of a hangover. 100 gold says they're right.",
+                "name": "Potion of sudden hangover end",
+                "rarity": "Common",
+                "sell_price": 0
+            },
+            "Super Shaggy Sandwich": {
+                "buffs": {
+                    "att": 200,
+                    "crt": 200,
+                    "def": 200,
+                    "evd": 200,
+                    "hp": 200,
+                    "mp": 200
+                },
+                "buy_price": 1000000,
+                "description": "This Legendary Sandwich hums with an unfamiliar, Godlike energy. Just looking at it makes your feeble mind feel the weight of infinity itself.",
+                "name": "Super Shaggy Sandwich",
+                "rarity": "Mythical",
+                "sell_price": 1000000
+            }
+        },
+        "xref": [
+            "Cheese",
+            "Health Potion",
+            "Super Shaggy Sandwich",
+            "Potion of sudden hangover end"
+        ]
     },
     "equipable": {
         "equipable_items": {
+            "Leek of higher crit chance": {
+                "buffs": {
+                    "att": 10,
+                    "crt": 15,
+                    "def": 0,
+                    "evd": 0,
+                    "hp": 0,
+                    "mp": 0
+                },
+                "buy_price": 450,
+                "classes": [
+                    "Knight",
+                    "mage"
+                ],
+                "damage": 10,
+                "description": "My grandfather told the tales of a small creature who became one with the way of the sword. Unfortunately, he was a duck, and there was no mega potion.",
+                "name": "Leek of higher crit chance",
+                "rarity": "rare",
+                "sell_price": 205,
+                "slot": "weapon"
+            },
             "Wooden Stick": {
-                    "name": "Wooden Stick",
                 "buffs": {
                     "att": 5,
                     "crt": 0,
@@ -21,12 +106,16 @@
                 ],
                 "damage": 5,
                 "description": "",
+                "name": "Wooden Stick",
                 "rarity": "common",
                 "sell_price": 5,
-                "slot": "right hand"
+                "slot": "weapon"
             }
         },
-        "xref": []
+        "xref": [
+            "Wooden Stick",
+            "Leek of higher crit chance"
+        ]
     },
     "misc": {
         "misc_items": {
@@ -37,25 +126,25 @@
                 "rarity": "rare",
                 "sell_price": 25
             },
+            "True Man's World": {
+                "buy_price": 1000,
+                "description": "Legend tells of two muscle wizards of such power that they were destined to be rivals. Eventually, they were trapped in a snow globe by a nerd who stole their magic. Unfortunately, now nerds have magic.",
+                "name": "True Man's World",
+                "rarity": "rare",
+                "sell_price": 1
+            },
             "Wood Block": {
                 "buy_price": 10,
                 "description": "",
                 "name": "Wood Block",
                 "rarity": "common",
                 "sell_price": 5
-            },
-            "cheese": {
-                "buy_price": 1,
-                "description": "cheese ",
-                "rarity": "common",
-                "sell_price": 0
             }
         },
         "xref": [
-            "Wooden Stick",
             "Wood Block",
             "Gamecube Controller",
-            "cheese"
+            "True Man's World"
         ]
     }
 }

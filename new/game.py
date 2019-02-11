@@ -6,37 +6,9 @@ from new.player import Player
 import os
 
 
-def load_data():
-    game_data = {}
-
-    builds = game_utilities.process_json("builds.json")
-    build_dict = {}
-
-    items = game_utilities.process_json("items.json")
-    items_dict = {}
-    items_dict["equipable"] = {}
-    items_dict["misc"] = {}
-    items_dict["consumable"] = {}
-
-    for item in items["equipable"]["equipable_items"]:
-        items_dict["equipable"][item] = Equipable(items["equipable"]["equipable_items"][item])
-
-
-    progs = game_utilities.process_json("prog.json")
-    progs_dict = {}
-
-    for build in builds["builds"]:
-        build_dict[build] = Build(builds["builds"][build])
-
-    game_data["build_data"] = build_dict
-    game_data["item_data"] = items_dict
-    print(game_data)
-    return game_data
-
-
 def launch(mode):
 
-    game_data = load_data()
+    game_data = game_utilities.load_data()
 
     saves = game_utilities.process_json("players.json")
     if mode == "new":
@@ -44,9 +16,9 @@ def launch(mode):
         return character_init.character_creation(saves, game_data["build_data"], name)
     else:
         while True:
-            name = input("Pick a save: ")
             xref = saves["xref"]
-            print(xref)
+            print(', '.join(xref))
+            name = input("Pick a save: ")
             if name in xref:
                 return character_init.load_character(saves, name)
             else:

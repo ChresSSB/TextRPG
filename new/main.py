@@ -1,10 +1,10 @@
+from new.game import launch
 from new.player import Player
 from new.build import Build
 import game_utilities
 
 
 if __name__ == '__main__':
-    # TODO: load all objects
     status = True
     while status:
         print("Welcome to the TextRPG created by ChresSSB")
@@ -15,10 +15,9 @@ if __name__ == '__main__':
         print("5. Quit")
         command = input("Select an option: ").lower()
         if command == "1" or command.startswith("new"):
-            pass
-            #start game but with different type
+            launch("new")
         elif command == "2" or command.startswith("loa"):
-            pass
+            launch("load")
         elif command == "3" or command.startswith("edi"):
             pass
         elif command == "4" or command.startswith("cre"):

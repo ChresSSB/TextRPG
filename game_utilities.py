@@ -1,10 +1,8 @@
 import json
 from termcolor import colored
 # Validations and utilities for larger game methods
-
-########################################################################################################################
-# JSON & String Methods                                                                                                #
-########################################################################################################################
+from new.build import Build
+from new.equipable import Equipable
 
 
 def process_json(filename):
@@ -39,6 +37,34 @@ def remove_prefix(text, prefix):
     if text.startswith(prefix):
         return text[len(prefix):]
     return text
+
+
+def load_data():
+    game_data = {}
+
+    builds = process_json("builds.json")
+    build_dict = {}
+
+    items = process_json("items.json")
+    items_dict = {}
+    items_dict["equipable"] = {}
+    items_dict["misc"] = {}
+    items_dict["consumable"] = {}
+
+    for item in items["equipable"]["equipable_items"]:
+        items_dict["equipable"][item] = Equipable(items["equipable"]["equipable_items"][item])
+
+
+    progs = process_json("prog.json")
+    progs_dict = {}
+
+    for build in builds["builds"]:
+        build_dict[build] = Build(builds["builds"][build])
+
+    game_data["build_data"] = build_dict
+    game_data["item_data"] = items_dict
+    print(game_data)
+    return game_data
 
 
 def percentage_converter(fraction):

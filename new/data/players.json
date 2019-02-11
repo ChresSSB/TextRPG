@@ -71,5 +71,8 @@
             }
         }
     },
-    "xref": ["Chres",  "DK"]
+    "xref": [
+        "Chres",
+        "DK"
+    ]
 }
