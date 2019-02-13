@@ -6,6 +6,7 @@ import game_utilities
 
 if __name__ == '__main__':
     game_data = game_utilities.load_data()
+    print(game_data)
     status = True
     while status:
         print("Welcome to the TextRPG created by ChresSSB")

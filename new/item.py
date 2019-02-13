@@ -7,6 +7,6 @@ class Item:
         self._rarity = item["rarity"]
 
     def __str__(self):
-        return self.name
+        return self._name
 
 
