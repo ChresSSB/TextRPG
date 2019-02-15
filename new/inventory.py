@@ -40,6 +40,25 @@ def sort_alphabetically(inventory):
     return unsorted
 
 
+def sort_by_type(inventory):
+    unsorted = sort_alphabetically(inventory)
+    equipables = []
+    miscs = []
+    consumables = []
+    for key in inventory.items():
+        if inventory[1][1] == "Equipable":
+            equipables.append(key)
+        elif inventory[1][1] == "Misc":
+            miscs.append(key)
+        else:
+            consumables.append(key)
+
+    sorted(unsorted)
+
+    print(unsorted)
+    return unsorted
+
+
 def add_item(player, item):
     print(item)
     if item._name in player.inventory:

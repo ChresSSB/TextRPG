@@ -54,6 +54,11 @@ def load_data():
     for item in items["equipable"]["equipable_items"]:
         items_dict["equipable"][item] = Equipable(items["equipable"]["equipable_items"][item])
 
+    for item in items["misc"]["misc_items"]:
+        items_dict["misc"][item] = Equipable(items["misc"]["misc_items"][item])
+
+    for item in items["consumable"]["consumable_items"]:
+        items_dict["consumable"][item] = Equipable(items["consumable"]["consumable_items"][item])
 
     progs = process_json("prog.json")
     progs_dict = {}
