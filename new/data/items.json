@@ -2,6 +2,7 @@
     "consumable": {
         "consumable_items": {
             "Cheese": {
+                "name": "Cheese",
                 "buffs": {
                     "att": 0,
                     "crt": 0,

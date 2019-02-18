@@ -6,27 +6,38 @@ def show_inventory(player, game_data):
     sorted_list = sort_alphabetically(player.inventory)
     # ways to sort: Alpha, Numer, Type, Recent
 
-    print("╔════════════════════════════╗")
-    print("║  Inventory                 ║")
-    print("╠═════════════════════╦══════╣")
-    print("║Item                 ║Amount║")
-    line_size = 25
+    # Adjust strings for name, amount, type
+    # create list of strings to print
+    print(sorted_list)
+
+    # format
+    print("║Item                 ║Type     ║Amount   ║")
+
+
+    print("╔═══════════════════════════════════════════╗")
+    print("║  Inventory                                ║")
+    print("╠═════════════════════════╦═════════╦═══════╣")
+    print("║Item                     ║Type     ║Amount ║")
     for k in sorted_list:
-        print("╠═════════════════════╬══════╣")
-        num = 24 - len(k[0][0:18]) + len(str(k[1])) - 29
-        string = '{:>' + str(num) + '}'
-        amount = string.format(" ║" + str(k[1][0]))
-        if len(k[0]) > 17:
-            string = "║" + k[0][0:15] + "..." + str(amount)
-        else:
-            string = "║" + k[0][0:16] + str(amount)
-        if len(str(k[1][0])) == 1:
-            print(string + "     ║")
-        elif len(str(k[1][0])) == 2:
-            print(string + "    ║")
-        else:
-            print(string + "   ║")
-    print("╚═════════════════════╩══════╝")
+        print("╠═════════════════════════╬═════════╬═══════╣")
+        name = k[0]
+        if len(name) > 21:
+            name = name[0:22]
+            name = name + "..."
+        name = name[0:25].ljust(25)
+
+        amount = str(k[1][0])
+        amount = amount.ljust(7)
+
+        tipe = k[1][1]
+        tipe = tipe.ljust(9)
+
+        time = k[1][2]
+
+        print("║" + name + "║" + tipe + "║" + amount + "║")
+
+
+    print("╚═════════════════════════╩═════════╩═══════╝")
 
 
 def sort_alphabetically(inventory):
@@ -41,11 +52,11 @@ def sort_alphabetically(inventory):
 
 
 def sort_by_type(inventory):
-    unsorted = sort_alphabetically(inventory)
+    inventory = sort_alphabetically(inventory)
     equipables = []
     miscs = []
     consumables = []
-    for key in inventory.items():
+    for key in inventory:
         if inventory[1][1] == "Equipable":
             equipables.append(key)
         elif inventory[1][1] == "Misc":
@@ -53,10 +64,15 @@ def sort_by_type(inventory):
         else:
             consumables.append(key)
 
-    sorted(unsorted)
+    unsorted = equipables.extend(consumables)
+    unsorted = unsorted.extend(miscs)
 
     print(unsorted)
     return unsorted
+
+
+def sort_recent(inventory):
+    pass
 
 
 def add_item(player, item):

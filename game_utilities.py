@@ -2,7 +2,9 @@ import json
 from termcolor import colored
 # Validations and utilities for larger game methods
 from new.build import Build
+from new.consumable import Consumable
 from new.equipable import Equipable
+from new.item import Item
 
 
 def process_json(filename):
@@ -55,10 +57,10 @@ def load_data():
         items_dict["equipable"][item] = Equipable(items["equipable"]["equipable_items"][item])
 
     for item in items["misc"]["misc_items"]:
-        items_dict["misc"][item] = Equipable(items["misc"]["misc_items"][item])
+        items_dict["misc"][item] = Item(items["misc"]["misc_items"][item])
 
     for item in items["consumable"]["consumable_items"]:
-        items_dict["consumable"][item] = Equipable(items["consumable"]["consumable_items"][item])
+        items_dict["consumable"][item] = Consumable(items["consumable"]["consumable_items"][item])
 
     progs = process_json("prog.json")
     progs_dict = {}
