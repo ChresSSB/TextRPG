@@ -1,25 +1,25 @@
 import time
 
+
 def show_inventory(player, game_data):
 
     add_item(player, game_data["item_data"]["equipable"]["Leek of higher crit chance"])
     sorted_list = sort_alphabetically(player.inventory)
+    sorted_list = sort_recent(sorted_list)
     # ways to sort: Alpha, Numer, Type, Recent
 
     # Adjust strings for name, amount, type
     # create list of strings to print
     print(sorted_list)
 
-    # format
-    print("║Item                 ║Type     ║Amount   ║")
 
 
-    print("╔═══════════════════════════════════════════╗")
-    print("║  Inventory                                ║")
-    print("╠═════════════════════════╦═════════╦═══════╣")
-    print("║Item                     ║Type     ║Amount ║")
+    print("╔════════════════════════════════════════════╗")
+    print("║  Inventory                                 ║")
+    print("╠═════════════════════════╦══════════╦═══════╣")
+    print("║Item                     ║Type      ║Amount ║")
     for k in sorted_list:
-        print("╠═════════════════════════╬═════════╬═══════╣")
+        print("╠═════════════════════════╬══════════╬═══════╣")
         name = k[0]
         if len(name) > 21:
             name = name[0:22]
@@ -30,14 +30,13 @@ def show_inventory(player, game_data):
         amount = amount.ljust(7)
 
         tipe = k[1][1]
-        tipe = tipe.ljust(9)
+        tipe = tipe.ljust(10)
 
         time = k[1][2]
 
         print("║" + name + "║" + tipe + "║" + amount + "║")
 
-
-    print("╚═════════════════════════╩═════════╩═══════╝")
+    print("╚═════════════════════════╩══════════╩═══════╝")
 
 
 def sort_alphabetically(inventory):
@@ -51,8 +50,7 @@ def sort_alphabetically(inventory):
     return unsorted
 
 
-def sort_by_type(inventory):
-    inventory = sort_alphabetically(inventory)
+def sort_type(inventory):
     equipables = []
     miscs = []
     consumables = []
@@ -65,25 +63,47 @@ def sort_by_type(inventory):
             consumables.append(key)
 
     unsorted = equipables.extend(consumables)
-    unsorted = unsorted.extend(miscs)
+    inventory = unsorted.extend(miscs)
 
-    print(unsorted)
-    return unsorted
+    print(inventory)
+    return inventory
+
+
+def sort_amount(inventory):
+    for i in range(len(inventory)):
+        min_idx = i
+        for j in range(i+1, len(inventory)):
+            print(inventory[min_idx][1][0])
+            print(inventory[j][1][0])
+            if inventory[min_idx][1][0] > inventory[j][1][0]:
+                min_idx = j
+        inventory[i], inventory[min_idx] = inventory[min_idx], inventory[i]
+    print(inventory)
+    return inventory
 
 
 def sort_recent(inventory):
-    pass
+    for i in range(len(inventory)):
+        min_idx = i
+        for j in range(i+1, len(inventory)):
+            print(inventory[min_idx][1][2])
+            print(inventory[j][1][2])
+            if inventory[min_idx][1][2] > inventory[j][1][2]:
+                min_idx = j
+        inventory[i], inventory[min_idx] = inventory[min_idx], inventory[i]
+    print(inventory)
+    return inventory
 
 
 def add_item(player, item):
     print(item)
     if item._name in player.inventory:
-        player.inventory[item._name][0] += 1
-        player.inventory[item._name][2] = int(time.time())
+        player.inventory[item.get_name()][0] += 1
+        player.inventory[item.get_name()][2] = int(time.time())
     else:
-        player.inventory[item._name] = []
-        player.inventory[item._name].append(1)
-        player.inventory[item._name].append(str(type(item).__name__))
-        player.inventory[item._name].append(int(time.time()))
+        player.inventory[item.get_name()] = []
+        player.inventory[item.get_name()].append(1)
+        player.inventory[item.get_name()].append(str(type(item).__name__))
+        player.inventory[item.get_name()].append(int(time.time()))
 
-    print(player.inventory[item._name])
+    print(player.inventory[item.get_name()])

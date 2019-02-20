@@ -9,4 +9,7 @@ class Item:
     def __str__(self):
         return self._name
 
+    def get_name(self):
+        return self._name
+
 

@@ -20,7 +20,7 @@
             "exp": 93,
             "exp_req": 200,
             "gold": 2760,
-            "hp": 52,
+            "hp": 53,
             "inventory": [
                 "Wood Block",
                 "Wooden Stick",
@@ -30,7 +30,7 @@
             "location": "IRL",
             "max_hp": 53,
             "max_mp": 52,
-            "mp": 42,
+            "mp": 52,
             "name": "Chres",
             "skills": [
                 "Recall",
