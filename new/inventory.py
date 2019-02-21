@@ -1,19 +1,19 @@
 import time
 
 
-def show_inventory(player, game_data):
-
-    add_item(player, game_data["item_data"]["equipable"]["Leek of higher crit chance"])
+def inventory_main(player, game_data):
     sorted_list = sort_alphabetically(player.inventory)
-    sorted_list = sort_recent(sorted_list)
     # ways to sort: Alpha, Numer, Type, Recent
 
     # Adjust strings for name, amount, type
     # create list of strings to print
-    print(sorted_list)
+
+    show_inventory(sorted_list)
+
+    # Management Loop
 
 
-
+def show_inventory(sorted_list):
     print("╔════════════════════════════════════════════╗")
     print("║  Inventory                                 ║")
     print("╠═════════════════════════╦══════════╦═══════╣")
@@ -31,8 +31,6 @@ def show_inventory(player, game_data):
 
         tipe = k[1][1]
         tipe = tipe.ljust(10)
-
-        time = k[1][2]
 
         print("║" + name + "║" + tipe + "║" + amount + "║")
 
@@ -97,7 +95,7 @@ def sort_recent(inventory):
 
 def add_item(player, item):
     print(item)
-    if item._name in player.inventory:
+    if item.get_name() in player.inventory:
         player.inventory[item.get_name()][0] += 1
         player.inventory[item.get_name()][2] = int(time.time())
     else:
@@ -107,3 +105,8 @@ def add_item(player, item):
         player.inventory[item.get_name()].append(int(time.time()))
 
     print(player.inventory[item.get_name()])
+
+
+def inventory_management(player, game_data):
+    pass
+

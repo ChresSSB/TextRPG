@@ -30,6 +30,7 @@ class Player:
         self.death_count = 0
         self.location = ""
         self.access = []
+        self._sort = []
 
     def new_player(self, name, build):
         self.name = name
