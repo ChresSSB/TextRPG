@@ -12,4 +12,14 @@ class Item:
     def get_name(self):
         return self._name
 
+    def get_buy_price(self):
+        return self._buy_price
 
+    def get_sell_price(self):
+        return self._sell_price
+
+    def get_desc(self):
+        return self._desc
+
+    def get_rarity(self):
+        return self._rarity

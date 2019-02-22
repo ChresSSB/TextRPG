@@ -1,5 +1,5 @@
 import time
-
+import game_utilities
 
 def inventory_main(player, game_data):
     sorted_list = sort_alphabetically(player.inventory)
@@ -108,5 +108,62 @@ def add_item(player, item):
 
 
 def inventory_management(player, game_data):
-    pass
+    inventory = player.inventory
+    entry = input("equip [item],dequip [slot], look [item], q to quit: ")
+    if entry.startswith("equip"):
+        item = game_utilities.remove_prefix(entry, "equip ")
+        if item in inventory.keys():
+            if inventory[item][1] == "Equipable":
+                item = game_data['item_data']['equipable'][item]
+                if player["build"] or "any" in item.get_build_requirement:
+                    slot = item.get_slot
+                    player.equipment[slot] = item
+                    player.inventory.remove(item)
+                    # update_stats(character, item)
+                    print("Equipped " + item)
+                else:
+                    print("Your class can't equip this " + item)
+            else:
+                print("This item can not be equipped.")
+        else:
+            print("This item does not exist.")
+    elif entry.startswith("dequip"):
+        pass
+    elif entry.startswith("look"):
+        look = game_utilities.remove_prefix(entry, "look ")
+        if look in player.inventory:
+            if player.inventory[look][1] == "equipable":
+                item = game_data["item_data"]["equipable"][look]
+                print("Name: " + look)
+                print("Description: " + item.get_desc())
+                print("Rarity: " + item.get_rarity())
+                print("Buy Price: " + str(item.get_buy_price()))
+                print("Sell Price: " + str(item.get_sell_price()))
+                print("Type: " + str(type(item)))
+                print("Slot: " + item.get_slot)
+                print("Required Classes: " + ', '.join(item.get_build_requirement))
+                print("Properties: ")
+                print("     HP: +" + str(item.get_buffs["hp"]))
+                print("     MP: +" + str(item.get_buffs["mp"]))
+                print("     Attack: +" + str(item.get_buffs["att"]))
+                print("     Defense: +" + str(item.get_buffs["def"]))
+                print("     Evasion: +" + str(item.get_buffs["evd"]))
+                print("     Critical: +" + str(item.get_buffs["crt"]))
+                input("press anything to go back to inventory: ")
+            if player.inventory[look][1] == "misc":
+                print("Name: " + look)
+                print("Description: " + item.get_desc())
+                print("Rarity: " + item.get_rarity())
+                print("Buy Price: " + str(item.get_buy_price()))
+                print("Sell Price: " + str(item.get_sell_price()))
+                print("Type: " + str(type(item)))
+                input("press anything to go back to inventory: ")
+        else:
+            print("Invalid Item")
+    elif entry.startswith("sort"):
+        pass
+    elif entry == "q":
+        pass
+    else:
+        pass
 
