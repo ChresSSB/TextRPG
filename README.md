@@ -1,5 +1,5 @@
 # TextRPG
-A customizable console Text based RPG made in Python
+A customizable console Text based RPG made in Python (Currently in refactor to OO)
 
 Python version 3.6.5 or higher
 
